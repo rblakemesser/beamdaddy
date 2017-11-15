@@ -120,9 +120,11 @@ class BeamPreset extends Component {
 export default class BeamPresetsMenu extends Component {
   render() {
     return (
-      <div style={{'padding': '15px', 'display': 'flex', 'flexWrap': 'wrap', 'maxWidth': '960px', 'margin': 'auto', 'justifyContent': 'space-between'}}>{buttonConfigs.map(config => {
-        return <BeamPreset key={config.name} {...config} />;
-      })}</div>
+      <div style={{'padding': '15px', 'display': 'flex', 'flexWrap': 'wrap', 'maxWidth': '960px', 'margin': 'auto', 'justifyContent': 'space-between'}}>
+        {buttonConfigs.map(config => {
+          return <BeamPreset key={config.name} {...config} />;
+        })}
+      </div>
     );
   }
 }
