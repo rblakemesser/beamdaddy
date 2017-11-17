@@ -71,8 +71,10 @@ class BeamStatus extends Component {
         <div style={{marginTop: '15px'}}>
           {this.props.animation} / {this.props.brightness} / {this.props.delay}
         </div>
-        <div onClick={e => this.onFetch(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>fetch</div>
-        <div onClick={e => this.onPush(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>push</div>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <div onClick={e => this.onFetch(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', marginRight: '10px'}}>fetch</div>
+          <div onClick={e => this.onPush(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>push</div>
+        </div>
       </div>
     );
   }
