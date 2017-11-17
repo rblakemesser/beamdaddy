@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import config from './config';
+import { connect } from 'react-redux';
+import { setBeam } from './actions';
 
 
 const buttonConfigs = [
@@ -93,28 +96,30 @@ const buttonConfigs = [
 
 class BeamPreset extends Component {
   onClick(e) {
-    fetch('https://blendra.ngrok.io', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        animation: this.props.animation,
-        colors: this.props.colors,
-        delay: this.props.delay,
-        brightness: this.props.brightness,
-      })
-    })
+    this.props.setBeam();
   }
 
   render() {
     return (
-      <div onClick={e => this.onClick(e)} style={{'flex': 1, 'padding': '20px', 'margin': '15px', 'border': '1px solid black', 'alignContent': 'center', 'justifyContent': 'center'}}>
+      <div onClick={e => this.onClick(e)} style={{'flex': 1, 'padding': '20px', 'margin': '15px', 'border': '1px solid black', flexDirection: 'column', 'justifyContent': 'center'}}>
         {this.props.name}
       </div>
     );
   }
 }
+
+
+BeamPreset = connect(
+  state => ({}),
+  (dispatch, ownProps) => ({
+    setBeam: () => dispatch(setBeam(
+      ownProps.delay,
+      ownProps.brightness,
+      ownProps.animation,
+      ownProps.colors
+    ))
+  })
+)(BeamPreset)
 
 
 export default class BeamPresetsMenu extends Component {
