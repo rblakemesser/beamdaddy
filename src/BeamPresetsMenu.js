@@ -34,6 +34,13 @@ const buttonConfigs = [
     'brightness': 255,
   },
   {
+    'name': 'pure blue',
+    'animation': 'light',
+    'colors': ['#0000FF'],
+    'delay': .05,
+    'brightness': 255,
+  },
+  {
     'name': 'bit trip',
     'animation': 'strip',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
@@ -48,15 +55,9 @@ const buttonConfigs = [
     'brightness': 255,
   },
   {
-    'name': 'rainbow slow',
+    'name': 'rainbow',
     'animation': 'rainbow',
     'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'rainbow fast',
-    'animation': 'rainbow',
-    'delay': .01,
     'brightness': 255,
   },
   {
