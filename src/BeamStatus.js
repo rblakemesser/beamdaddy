@@ -5,43 +5,6 @@ import { getStatus, setBeam, postState } from './actions';
 import rainbow from './rainbow.svg';
 
 
-class CurrentColor extends Component {
-  render() {
-    return (
-      <div style={{
-        backgroundColor: this.props.color,
-        height: '30px',
-        width: '30px',
-        borderRadius: '16px',
-        border: '2px solid #eaeaea',
-        margin: '1px'
-      }}></div>
-    );
-  }
-}
-
-
-class CurrentColors extends Component {
-  renderRainbow() {
-    return <img style={{border: '2px solid #eaeaea', height: '30px', width: '30px', borderRadius: '16px', margin: '1px'}} src={rainbow} />;
-  }
-
-  render() {
-    return (
-      <div style={{
-        display: 'flex', flexDirection: 'row',
-        justifyContent: 'center', alignItems: 'center'
-      }}>
-        {this.props.colors.map((c, n) => {
-          return <CurrentColor key={n} color={c} />;
-        })}
-        {this.props.colors.length ? '' : this.renderRainbow()}
-      </div>
-    );
-  }
-}
-
-
 class BeamStatus extends Component {
   onFetch(e) {
     e.preventDefault();
@@ -67,13 +30,9 @@ class BeamStatus extends Component {
         justifyContent: 'center', alignItems: 'center',
         backgroundColor: '#208aee', paddingTop: '20px', paddingBottom: '20px'
       }}>
-        <CurrentColors colors={this.props.colors} />
-        <div style={{marginTop: '15px'}}>
-          {this.props.animation} / {this.props.brightness} / {this.props.delay}
-        </div>
         <div style={{display: 'flex', flexDirection: 'row'}}>
-          <div onClick={e => this.onFetch(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', marginRight: '10px'}}>fetch</div>
-          <div onClick={e => this.onPush(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>push</div>
+          <div onClick={e => this.onFetch(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginRight: '10px', 'cursor': 'pointer'}}>fetch</div>
+          <div onClick={e => this.onPush(e)} style={{width: '120px', height: '30px', border: '1px solid white', display: 'flex', justifyContent: 'center', alignItems: 'center', 'cursor': 'pointer'}}>push</div>
         </div>
       </div>
     );

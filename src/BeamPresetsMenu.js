@@ -6,91 +6,19 @@ import { setBeam } from './actions';
 
 const buttonConfigs = [
   {
-    'name': 'pure white',
-    'animation': 'light',
-    'colors': ['#ffffff'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'pure red',
-    'animation': 'light',
-    'colors': ['#FF0000'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'pure blue',
-    'animation': 'light',
-    'colors': ['#0000FF'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'pure green',
-    'animation': 'light',
-    'colors': ['#008000'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'pure blue',
-    'animation': 'light',
-    'colors': ['#0000FF'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
     'name': 'bit trip',
     'animation': 'strip',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'bit still',
-    'animation': 'light',
-    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'rainbow',
-    'animation': 'rainbow',
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'bloom fast',
-    'animation': 'bloom',
-    'delay': .01,
-    'brightness': 255,
-  },
-  {
-    'name': 'bloom slow',
-    'animation': 'bloom',
-    'delay': .05,
-    'brightness': 255,
-  },
-  {
-    'name': 'rain',
-    'animation': 'rain',
-    'delay': .25,
-    'brightness': 255,
   },
   {
     'name': 'rain dots',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
     'animation': 'rain',
-    'delay': .25,
-    'brightness': 255,
   },
   {
     'name': 'lava trip',
     'animation': 'strip',
     'colors': ['#ff0000', '#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'],
-    'delay': .05,
-    'brightness': 255,
   },
 ];
 
@@ -102,7 +30,7 @@ class BeamPreset extends Component {
 
   render() {
     return (
-      <div onClick={e => this.onClick(e)} style={{'flex': 1, 'padding': '20px', 'margin': '15px', 'border': '1px solid black', flexDirection: 'column', 'justifyContent': 'center'}}>
+      <div onClick={e => this.onClick(e)} style={{display: 'flex', 'border': '1px solid black', 'alignItems': 'center', justifyContent: 'center', 'cursor': 'pointer', 'height': '60px', 'width': '60px', 'borderRadius': '30px'}}>
         {this.props.name}
       </div>
     );
@@ -126,10 +54,13 @@ BeamPreset = connect(
 export default class BeamPresetsMenu extends Component {
   render() {
     return (
-      <div style={{'padding': '15px', 'display': 'flex', 'flexWrap': 'wrap', 'maxWidth': '960px', 'margin': 'auto', 'justifyContent': 'space-between'}}>
-        {buttonConfigs.map(config => {
-          return <BeamPreset key={config.name} {...config} />;
-        })}
+      <div>
+        <div>Presets</div>
+        <div style={{flex: 1, 'display': 'flex', 'flexWrap': 'wrap', marginTop: '20px', 'borderRadius': '30px', justifyContent: 'space-around'}}>
+          {buttonConfigs.map(config => {
+            return <BeamPreset key={config.name} {...config} />;
+          })}
+        </div>
       </div>
     );
   }

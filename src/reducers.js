@@ -41,12 +41,13 @@ const beamState = (state = {}, action) => {
       return newState;
 
     case 'SET_BEAM':
-      return {
-        animation: action.animation,
-        colors: action.colors ? [...action.colors] : [],
-        brightness: action.brightness,
-        delay: action.delay
+      newState = {
+        animation: action.animation ? action.animation : state.animation,
+        colors: (action.colors && action.colors.length) ? [...action.colors] : [...state.colors],
+        brightness: action.brightness !== undefined && action.brightness !== null ? action.brightness : state.brightness,
+        delay: action.delay !== undefined  && action.delay !== null ? action.delay : state.delay
       };
+      return newState;
 
     default:
       return state;

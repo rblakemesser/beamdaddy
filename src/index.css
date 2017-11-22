@@ -3,3 +3,25 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+div .rc-color-picker-trigger {
+  border: 2px solid #eaeaea;
+  padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 32px;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #fff inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+div .rc-color-picker-trigger-open {
+  box-shadow: 0px 0px 3px #999;
+}

@@ -3,6 +3,7 @@ import beam from './beam.svg';
 import BeamPresetsMenu from './BeamPresetsMenu';
 import BeamSlider from './BeamSlider';
 import BeamStatus from './BeamStatus';
+import AnimationList from './AnimationList';
 import ColorList from './ColorList';
 import './App.css';
 
@@ -17,9 +18,10 @@ class App extends Component {
           <BeamStatus />
         </header>
 
-        <div style={{maxWidth: '800px', display: 'flex', flexDirection: 'column', alignSelf: 'center'}}>
+        <div style={{maxWidth: '800px', display: 'flex', flexDirection: 'column', alignSelf: 'center', 'flex': 1}}>
           <BeamSlider attrName="delay" label="Delay" min={1} max={20} />
           <BeamSlider attrName="brightness" label="Brightness" min={0} max={255} />
+          <AnimationList />
           <ColorList />
 
           <BeamPresetsMenu />
