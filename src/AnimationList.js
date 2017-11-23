@@ -37,11 +37,11 @@ class AnimationList extends Component {
     const animations = ['light', 'strip', 'rainbow', 'kimbow', 'bloom', 'rain'];
     return (
       <div>
-        <div>Animation</div>
+        <div style={{marginTop: '25px'}}>Animation</div>
         <div style={{
           display: 'flex', flexDirection: 'row',
           justifyContent: 'center', alignItems: 'center',
-          marginBottom: '15px'
+          marginBottom: '15px', marginTop: '10px'
         }}>
           {animations.map((a, n) => {
             return <Animation key={n} name={a} />;

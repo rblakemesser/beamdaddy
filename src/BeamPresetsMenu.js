@@ -55,8 +55,8 @@ export default class BeamPresetsMenu extends Component {
   render() {
     return (
       <div>
-        <div>Presets</div>
-        <div style={{flex: 1, 'display': 'flex', 'flexWrap': 'wrap', marginTop: '20px', 'borderRadius': '30px', justifyContent: 'space-around'}}>
+        <div style={{marginTop: '25px'}}>Presets</div>
+        <div style={{flex: 1, 'display': 'flex', 'flexWrap': 'wrap', marginTop: '10px', 'borderRadius': '30px', justifyContent: 'space-around'}}>
           {buttonConfigs.map(config => {
             return <BeamPreset key={config.name} {...config} />;
           })}

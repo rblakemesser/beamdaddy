@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ColorPicker from 'rc-color-picker';
 import 'rc-color-picker/assets/index.css';
-
+import { Holdable } from 'react-touch';
 import { addColor, removeColor, changeColor } from './actions';
 
 
@@ -14,16 +14,22 @@ class ColorItem extends Component {
     }
   }
 
+  handleHold(e) {
+    console.log(e);
+  }
+
   render() {
+
     return (
       <div style={{flexDirection: 'row', display: 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
-        <ColorPicker
-          animation="slide-up"
-          color={this.props.color}
-          onChange={e => this.onChange(e)}
-          enableAlpha={false}
-          mode={'RGB'}
-        />
+        <Holdable className="rc-color-picker-trigger" onHoldComplete={this.handleHold}>
+          <ColorPicker
+            color={this.props.color}
+            onChange={e => this.onChange(e)}
+            enableAlpha={false}
+            mode={'RGB'}
+          />
+        </Holdable>
 
         {/* <RemoveColor position={this.props.position} /> */}
       </div>
@@ -39,29 +45,29 @@ ColorItem = connect(
 )(ColorItem);
 
 
-// class RemoveColor extends Component {
-//   render() {
-//     return (
-//       <div
-//         onClick={e => {
-//           e.preventDefault();
-//           this.props.remove();
-//         }}
-//         style={{cursor: 'pointer', width: '20px', height: '20px', border: '1px solid black', 'marginLeft': '5px'}}
-//       >
-//         x
-//       </div>
-//     );
-//   }
-// }
-//
-// RemoveColor = connect(
-//   state => ({}),
-//   (dispatch, ownProps) => ({
-//     remove: () => dispatch(removeColor(ownProps.position))
-//   })
-// )(RemoveColor);
-//
+class RemoveColor extends Component {
+  render() {
+    return (
+      <div
+        onClick={e => {
+          e.preventDefault();
+          this.props.remove(this.props.colors.length - 1);
+        }}
+        className="rc-color-picker-trigger"
+      >
+        -
+      </div>
+    );
+  }
+}
+
+RemoveColor = connect(
+  state => ({colors: state.beamState.colors}),
+  (dispatch, ownProps) => ({
+    remove: (i) => dispatch(removeColor(i))
+  })
+)(RemoveColor);
+
 
 let AddColor = ({dispatch}) => {
   let hex = '#FF0000';
@@ -86,11 +92,12 @@ class ColorList extends Component {
   render() {
     return (
       <div>
-        <div>Colors</div>
-        <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center'}}>
+        <div style={{marginTop: '25px'}}>Colors</div>
+        <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
 
           <AddColor />
           {this.props.beamState.colors.map((c, i) => <ColorItem key={i} position={i} color={c} />)}
+          <RemoveColor />
 
         </div>
       </div>

@@ -23,8 +23,8 @@ class BeamSlider extends Component {
     }
 
     return (
-      <div style={{margin: '10px 25px'}}>
-        <div>{this.props.label}</div>
+      <div style={{marginLeft: '25px', marginRight: '25px'}}>
+        <div style={{marginTop: '25px', marginBottom: '10px'}}>{this.props.label}</div>
         <Slider
           min={this.props.min}
           max={this.props.max}

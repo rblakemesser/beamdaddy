@@ -18,7 +18,7 @@ class App extends Component {
           <BeamStatus />
         </header>
 
-        <div style={{maxWidth: '800px', display: 'flex', flexDirection: 'column', alignSelf: 'center', 'flex': 1}}>
+        <div style={{maxWidth: '350px', display: 'flex', flexDirection: 'column', alignSelf: 'center', 'flex': 1}}>
           <BeamSlider attrName="delay" label="Delay" min={1} max={20} />
           <BeamSlider attrName="brightness" label="Brightness" min={0} max={255} />
           <AnimationList />
