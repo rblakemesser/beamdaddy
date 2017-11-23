@@ -34,7 +34,7 @@ Animation = connect(
 class AnimationList extends Component {
 
   render() {
-    const animations = ['light', 'strip', 'rainbow', 'kimbow', 'bloom', 'rain'];
+    const animations = ['light', 'strip', 'rainbow', 'bloom', 'rain'];
     return (
       <div>
         <div style={{marginTop: '25px'}}>Animation</div>

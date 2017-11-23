@@ -92,12 +92,14 @@ class ColorList extends Component {
   render() {
     return (
       <div>
-        <div style={{marginTop: '25px'}}>Colors</div>
+        <div style={{marginTop: '25px', marginBottom: '10px'}}>Colors</div>
+        <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
+          <RemoveColor />
+          <AddColor />
+        </div>
         <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
 
-          <AddColor />
           {this.props.beamState.colors.map((c, i) => <ColorItem key={i} position={i} color={c} />)}
-          <RemoveColor />
 
         </div>
       </div>
