@@ -1,7 +1,12 @@
-import config from './config';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
+
+
+const BACKEND_HOST = runtimeEnv().REACT_APP_BACKEND_HOST;
+console.log(BACKEND_HOST);
+
 
 export const postState = beamState => {
-  return fetch(config.backend_host, {
+  return fetch(BACKEND_HOST, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -17,7 +22,7 @@ export const postState = beamState => {
 
 
 export const getStatus = () => {
-  return fetch(config.backend_host, {
+  return fetch(BACKEND_HOST, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
