@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ColorPicker from 'rc-color-picker';
 import 'rc-color-picker/assets/index.css';
-import { Holdable } from 'react-touch';
 import { addColor, removeColor, changeColor } from './actions';
 
 
@@ -22,14 +21,14 @@ class ColorItem extends Component {
 
     return (
       <div style={{flexDirection: 'row', display: 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
-        <Holdable className="rc-color-picker-trigger" onHoldComplete={this.handleHold}>
+        <div className="rc-color-picker-trigger" onHoldComplete={this.handleHold}>
           <ColorPicker
             color={this.props.color}
             onChange={e => this.onChange(e)}
             enableAlpha={false}
             mode={'RGB'}
           />
-        </Holdable>
+        </div>
 
         {/* <RemoveColor position={this.props.position} /> */}
       </div>
