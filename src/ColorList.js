@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ColorPicker from 'rc-color-picker';
-import 'rc-color-picker/assets/index.css';
+import { HuePicker } from 'react-color';
 import { addColor, removeColor, changeColor } from './actions';
 
 
 class ColorItem extends Component {
 
   onChange(newColor) {
-    if (this.props.color !== newColor.color) {
-      this.props.change(newColor.color);
+    if (this.props.color !== newColor.hex) {
+      this.props.change(newColor.hex);
     }
   }
 
@@ -21,12 +21,12 @@ class ColorItem extends Component {
 
     return (
       <div style={{flexDirection: 'row', display: 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
-        <div className="rc-color-picker-trigger" onHoldComplete={this.handleHold}>
-          <ColorPicker
+        <div
+          style={{marginTop: '10px'}}
+          >
+          <HuePicker
             color={this.props.color}
             onChange={e => this.onChange(e)}
-            enableAlpha={false}
-            mode={'RGB'}
           />
         </div>
 

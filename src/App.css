@@ -33,3 +33,26 @@ html, body, #root {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.caret-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1.25rem;
+  fill: #333;
+}
+
+.rrs--options-visible .caret-icon {
+  transform: rotate(180deg);
+}
+
+/* OPTIONAL - animate opening of the options panel */
+.rrs__options {
+  transition: all .2s cubic-bezier(0.19, 1, 0.22, 1);
+  max-height: 0;
+  opacity: 0;
+}
+
+/* OPTIONAL - animate opening of the options panel */
+.rrs--options-visible .rrs__options {
+  opacity: 1;
+}

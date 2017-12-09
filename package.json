@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@mars/heroku-js-runtime-env": "^3.0.2",
     "lodash": "^4.17.4",
-    "rc-color-picker": "^1.2.3",
     "rc-slider": "^8.3.5",
     "react": "^16.0.0",
+    "react-color": "^2.13.8",
     "react-dnd": "^2.5.4",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -20,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-responsive-select": "^3.0.10"
   }
 }

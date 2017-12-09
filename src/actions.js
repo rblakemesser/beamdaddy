@@ -1,7 +1,4 @@
-import runtimeEnv from '@mars/heroku-js-runtime-env';
-
-
-const BACKEND_HOST = runtimeEnv().REACT_APP_BACKEND_HOST;
+const BACKEND_HOST = 'http://localhost:5555/'
 console.log(BACKEND_HOST);
 
 
