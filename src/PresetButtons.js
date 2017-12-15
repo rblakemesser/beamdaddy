@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setBeam } from './actions';
+import { getStatus, setBeam } from './actions';
 
 
 const buttonConfigs = [
   {
     'name': 'roygbiv',
+    'animation': 'Strip',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
+  },
+  {
+    'name': 'rainbow',
+    'animation': 'Rainbow',
+    'colors': ['#ffffff'],
   },
   {
     'name': 'lava',
@@ -43,26 +49,45 @@ const buttonConfigs = [
   {
     'name': 'lake',
     'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
-  }
+  },
+  {
+    'name': 'lavatrip',
+    'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
+  },
 ];
 
 
-class BeamPreset extends Component {
+class PresetButton extends Component {
   onClick(e) {
     this.props.setBeam();
   }
 
   render() {
+    const colors = this.props.colors;
+    const numColors = this.props.colors.length;
+
+    const colorPositionList = [];
+    colors.map((color, n) => {
+      const lowerBound = n * 100 / numColors + '%';
+      const upperBound = (n + 1) * 100 / numColors + '%';
+
+      colorPositionList.push(color + ' ' + lowerBound);
+      colorPositionList.push(color + ' ' + upperBound);
+    });
+
+    const backgroundValue = `-webkit-linear-gradient(left, ${colorPositionList.join(', ')})`;
+
     return (
-      <div onClick={e => this.onClick(e)} style={{display: 'flex', 'border': '1px solid black', 'alignItems': 'center', justifyContent: 'center', 'cursor': 'pointer', 'height': '60px', 'width': '60px', 'borderRadius': '30px'}}>
-        {this.props.name}
+      <div className="preset" onClick={e => this.onClick(e)}>
+        <div className="preset-colors" style={{background: backgroundValue}}></div>
+        <div className="preset-name">{this.props.name}</div>
       </div>
     );
   }
 }
 
 
-BeamPreset = connect(
+PresetButton = connect(
   state => ({}),
   (dispatch, ownProps) => ({
     setBeam: () => dispatch(setBeam(
@@ -72,19 +97,16 @@ BeamPreset = connect(
       ownProps.colors
     ))
   })
-)(BeamPreset)
+)(PresetButton)
 
 
 export default class BeamPresetsMenu extends Component {
   render() {
     return (
-      <div>
-        <div style={{marginTop: '25px'}}>Color Presets</div>
-        <div style={{flex: 1, 'display': 'flex', 'flexWrap': 'wrap', marginTop: '10px', 'borderRadius': '30px', justifyContent: 'space-around'}}>
-          {buttonConfigs.map(config => {
-            return <BeamPreset key={config.name} {...config} />;
-          })}
-        </div>
+      <div className="preset-wrapper">
+        {buttonConfigs.map(config => {
+          return <PresetButton key={config.name} {...config} />;
+        })}
       </div>
     );
   }

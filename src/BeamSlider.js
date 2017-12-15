@@ -23,8 +23,8 @@ class BeamSlider extends Component {
     }
 
     return (
-      <div style={{marginLeft: '25px', marginRight: '25px'}}>
-        <div style={{marginTop: '25px', marginBottom: '10px'}}>{this.props.label}</div>
+      <div>
+        <div>{this.props.label}</div>
         <Slider
           min={this.props.min}
           max={this.props.max}
@@ -38,7 +38,7 @@ class BeamSlider extends Component {
 
 
 BeamSlider = connect(
-  state => ({delay: state.beamState.delay, brightness: state.beamState.brightness}),
+  state => (state.beamState),
   (dispatch, ownProps) => ({
     changeAttribute: newVal => dispatch(changeAttribute(ownProps.attrName, newVal))
   })

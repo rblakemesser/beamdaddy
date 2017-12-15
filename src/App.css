@@ -2,36 +2,67 @@ html, body, #root {
   background-color: #F9F9F9;
 }
 
-.App {
+.app {
   text-align: center;
   margin-bottom: 50px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-  margin-top: 20px;
-}
-
-.App-header {
-  background-color: #222;
-  color: white;
+  max-width: 600px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
 }
 
-.App-title {
-  font-size: 1.5em;
+.preset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.App-intro {
-  font-size: large;
+.preset {
+  font-size: 70%;
+  padding: 4px;
+  margin: 10px;
+  border-radius: 5px;
+  background: #444;
+  color: white;
+  height: 100px;
+  width: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.preset-colors, .preset-name {
+  flex: 1;
+  width: 100%;
+}
+
+.preset-name {
+  height: 20%;
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preset-colors {
+  border-radius: 4px;
+  height: 80%;
+  flex-grow: 4;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  width: 400px;
+  max-width: 600px;
 }
 
 .caret-icon {
@@ -39,6 +70,10 @@ html, body, #root {
   right: 1rem;
   top: 1.25rem;
   fill: #333;
+}
+
+.animation-list {
+  margin-top: 15px;
 }
 
 .rrs--options-visible .caret-icon {

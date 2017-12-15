@@ -1,5 +1,37 @@
 import { combineReducers } from 'redux';
 
+const BACKEND_HOST = 'http://localhost:5555/'
+
+
+export const getStatus = () => {
+  return fetch(BACKEND_HOST, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((resp) => {
+    return resp.json().then(j => {
+      return j;
+    })
+  })
+}
+
+
+export const postState = beamState => {
+  return fetch(BACKEND_HOST, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      animation: beamState.animation,
+      colors: beamState.colors,
+      delay: beamState.delay,
+      brightness: beamState.brightness,
+    })
+  });
+};
+
 
 const beamState = (state = {}, action) => {
   let newState;
@@ -7,22 +39,26 @@ const beamState = (state = {}, action) => {
   switch (action.type) {
 
     case 'ADD_COLOR':
-      return {
+      newState = {
         ...state,
         colors: [
           ...state.colors,
           action.hex
         ]
       };
+      postState(newState);
+      return newState;
 
     case 'REMOVE_COLOR':
-      return {
+      newState = {
         ...state,
         colors: [
           ...state.colors.slice(0, action.position),
           ...state.colors.slice(action.position + 1)
         ]
       };
+      postState(newState);
+      return newState;
 
     case 'CHANGE_COLOR':
       newState = {
@@ -30,6 +66,7 @@ const beamState = (state = {}, action) => {
         colors: [...state.colors]
       };
       newState.colors[action.position] = action.hex;
+      postState(newState);
       return newState;
 
     case 'CHANGE_ATTRIBUTE':
@@ -38,6 +75,7 @@ const beamState = (state = {}, action) => {
         colors: [...state.colors]
       };
       newState[action.attrName] = action.newVal;
+      postState(newState);
       return newState;
 
     case 'SET_BEAM':
@@ -47,6 +85,7 @@ const beamState = (state = {}, action) => {
         brightness: action.brightness !== undefined && action.brightness !== null ? action.brightness : state.brightness,
         delay: action.delay !== undefined  && action.delay !== null ? action.delay : state.delay
       };
+      postState(newState);
       return newState;
 
     default:

@@ -7,33 +7,6 @@ import ReactResponsiveSelect from 'react-responsive-select';
 import 'react-responsive-select/dist/ReactResponsiveSelect.css';
 
 
-class Animation extends Component {
-  render() {
-    const borderColor = this.props.animation === this.props.name ? '#ff0000': '#eaeaea';
-    return (
-
-      <div onClick={e => this.props.setAnimation()} style={{
-        height: '50px',
-        width: '50px',
-        borderRadius: '25px',
-        border: '2px solid ' + borderColor,
-        margin: '2px',
-        textAlign: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        cursor: 'pointer'
-      }}>{this.props.name}</div>
-    );
-  }
-}
-Animation = connect(
-  state => (state.beamState),
-  (dispatch, ownProps) => ({
-    setAnimation: () => dispatch(changeAttribute('animation', ownProps.name))
-  })
-)(Animation);
-
 
 const caretIcon = (
   <svg className="caret-icon" x="0px" y="0px" width="11.848px" height="6.338px" viewBox="351.584 2118.292 11.848 6.338">
@@ -62,9 +35,7 @@ class AnimationList extends Component {
       'Twinkle',
     ];
     return (
-      <div
-        style={{marginTop: '25px'}}
-        >
+      <div className="animation-list">
         <ReactResponsiveSelect
           caretIcon={caretIcon}
           prefix="Animation: "

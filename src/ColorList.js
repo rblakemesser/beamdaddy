@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ColorPicker from 'rc-color-picker';
 import { HuePicker } from 'react-color';
 import { addColor, removeColor, changeColor } from './actions';
 
@@ -20,17 +19,14 @@ class ColorItem extends Component {
   render() {
 
     return (
-      <div style={{flexDirection: 'row', display: 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
-        <div
-          style={{marginTop: '10px'}}
-          >
+      <div>
+        <div>
           <HuePicker
             color={this.props.color}
             onChange={e => this.onChange(e)}
           />
         </div>
 
-        {/* <RemoveColor position={this.props.position} /> */}
       </div>
     )
   }
@@ -91,12 +87,12 @@ class ColorList extends Component {
   render() {
     return (
       <div>
-        <div style={{marginTop: '25px', marginBottom: '10px'}}>Colors</div>
-        <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
+        <div>Colors</div>
+        <div>
           <RemoveColor />
           <AddColor />
         </div>
-        <div style={{display: 'flex', 'flexDirection': 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
+        <div>
 
           {this.props.beamState.colors.map((c, i) => <ColorItem key={i} position={i} color={c} />)}
 
