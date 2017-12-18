@@ -5,54 +5,64 @@ import { getStatus, setBeam } from './actions';
 
 const buttonConfigs = [
   {
-    'name': 'roygbiv',
+    'name': 'slow rainbow',
+    'animation': 'Rainbow',
+    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
+  },
+  {
+    'name': 'bit trip',
     'animation': 'Strip',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
   },
   {
-    'name': 'rainbow',
-    'animation': 'Rainbow',
-    'colors': ['#ffffff'],
-  },
-  {
-    'name': 'lava',
+    'name': 'lava trip',
+    'animation': 'Strip',
     'colors': ['#ff0000', '#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'],
   },
   {
-    'name': 'easter',
+    'name': 'easter trip',
+    'animation': 'Strip',
     'colors': ['#58e7c7', '#ffebba', '#cc91ff', '#ffa8fb', '#f5ffa6'],
   },
   {
-    'name': 'mud',
+    'name': 'mud wipe rotate',
+    'animation': 'ColorWipeRotate',
     'colors': ["#0190b6", "#37ad7e", "#84cc33", "#c69817", "#e13d14"],
   },
   {
-    'name': 'autumn',
-    'colors': ["#f3780a", "#fc7138", "#ffbd4a", "#7c4d25"],
-  },
-  {
-    'name': 'catan',
+    'name': 'catan zap',
+    'animation': 'Zap',
     'colors': ["#7b6f83", "#9c4300", "#4fa6eb", "#517d19", "#f0ad00"],
   },
   {
-    'name': 'mermaid',
+    'name': 'mermaid twinkle',
+    'animation': 'Twinkle',
     'colors': ["#180e80", "#300d80", "#530b80", "#780780", "#a10780"],
   },
   {
-    'name': 'ionic',
+    'name': 'ionic rain',
+    'animation': 'Rain',
     'colors': ["#ffc900", "#33cd5f", "#886aea", "#387ef5", "#ef473a"],
   },
   {
     'name': 'blue swirl',
+    'animation': 'ColorWipeRotate',
     'colors': ["#00e4ff", "#00b1ff", "#0070ff", "#004aff", "#0009ff"],
   },
   {
-    'name': 'lake',
+    'name': 'lake zap',
+    'animation': 'Zap',
     'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
   },
   {
-    'name': 'lavatrip',
-    'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
+    'name': 'pure white',
+    'animation': 'Light',
+    'colors': ['#ffffff']
+  },
+  {
+    'name': 'off',
+    'brightness': 0,
+    'colors': [],
   },
 ];
 
@@ -91,7 +101,7 @@ PresetButton = connect(
   state => ({}),
   (dispatch, ownProps) => ({
     setBeam: () => dispatch(setBeam(
-      ownProps.delay,
+      ownProps.speed,
       ownProps.brightness,
       ownProps.animation,
       ownProps.colors

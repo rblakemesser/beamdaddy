@@ -1,3 +1,36 @@
+const BACKEND_HOST = 'http://localhost:5555/'
+
+
+export const getStatus = () => {
+  return fetch(BACKEND_HOST, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then((resp) => {
+    return resp.json().then(j => {
+      return j;
+    })
+  })
+}
+
+
+export const postState = beamState => {
+  return fetch(BACKEND_HOST, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      animation: beamState.animation,
+      colors: beamState.colors,
+      delay: 1 / (beamState.speed ** 3 / 2),
+      brightness: beamState.brightness,
+    })
+  });
+};
+
+
 export const addColor = hex => ({
   type: 'ADD_COLOR',
   hex
@@ -24,9 +57,9 @@ export const changeAttribute = (attrName, newVal) => ({
 })
 
 
-export const setBeam = (delay, brightness, animation, colors) => ({
+export const setBeam = (speed, brightness, animation, colors) => ({
   type: 'SET_BEAM',
-  delay,
+  speed,
   brightness,
   animation,
   colors

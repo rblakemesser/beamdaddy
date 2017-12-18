@@ -11,7 +11,7 @@ import beamDaddyReducers from './reducers';
 
 const store = createStore(
   beamDaddyReducers,
-  {beamState: {animation: 'light', colors: ['#ffffff'], brightness: 255, delay: .1}},
+  {beamState: {animation: 'light', colors: ['#ffffff'], brightness: 255, speed: 300}},
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );

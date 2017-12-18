@@ -9,18 +9,11 @@ import { changeAttribute } from './actions';
 class BeamSlider extends Component {
 
   onSliderChange(newVal) {
-    if (this.props.attrName === 'delay') {
-      newVal /= 20;
-    }
-
     this.props.changeAttribute(newVal);
   }
 
   render() {
-    let val = this.props.attrName === 'delay' ? this.props.delay : this.props.brightness;
-    if (this.props.attrName === 'delay') {
-      val *= 20;
-    }
+    let val = this.props.attrName === 'speed' ? this.props.speed : this.props.brightness;
 
     return (
       <div>
