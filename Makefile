@@ -1,3 +1,3 @@
 deploy:
 	npm run-script build
-	scp -prq build/. beam:workspace/beamdaddy/
+	scp -prq build/. surrey:workspace/beamdaddy/
