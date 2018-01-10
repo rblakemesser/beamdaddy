@@ -1,4 +1,4 @@
-const BACKEND_HOST = 'http://localhost:5555/api/'
+const BACKEND_HOST = 'http://localhost/api/'
 
 
 export const getStatus = () => {

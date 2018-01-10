@@ -90,7 +90,6 @@ class BeamPresetsMenu extends Component {
       let val = buttonConfigs[n];
       if (val.animation === this.props.animation) {
         let idx = buttonConfigs.length - 1 === parseInt(n) ? 0 : parseInt(n) + 1;
-        console.log(idx);
         nextConfig = buttonConfigs[idx];
 
         console.log('next config is: ', nextConfig.name, '   n is: ', n, '    idx is: ', idx);
