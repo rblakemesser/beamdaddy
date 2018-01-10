@@ -12,15 +12,6 @@ class App extends Component {
     return (
       <div className="app">
         <PresetButtons />
-        <BackendUpdater />
-
-        <div className="controls">
-          <BeamSlider attrName="speed" label="Speed" min={1} max={10} />
-          <BeamSlider attrName="brightness" label="Brightness" min={0} max={255} />
-
-          <AnimationList />
-
-        </div>
       </div>
     );
   }

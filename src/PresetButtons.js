@@ -2,37 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getStatus, setBeam } from './actions';
 
+import hotdog from './hotdog.svg';
+
 
 const buttonConfigs = [
+  {
+    'name': 'pure white',
+    'animation': 'Light',
+    'colors': ['#ffffff']
+  },
   {
     'name': 'slow rainbow',
     'animation': 'Rainbow',
     'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
   },
   {
-    'name': 'bit trip',
-    'animation': 'Strip',
-    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
-  },
-  {
     'name': 'lava trip',
     'animation': 'Strip',
     'colors': ['#ff0000', '#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'],
-  },
-  {
-    'name': 'easter trip',
-    'animation': 'Strip',
-    'colors': ['#58e7c7', '#ffebba', '#cc91ff', '#ffa8fb', '#f5ffa6'],
-  },
-  {
-    'name': 'mud wipe rotate',
-    'animation': 'ColorWipeRotate',
-    'colors': ["#0190b6", "#37ad7e", "#84cc33", "#c69817", "#e13d14"],
-  },
-  {
-    'name': 'catan zap',
-    'animation': 'Zap',
-    'colors': ["#7b6f83", "#9c4300", "#4fa6eb", "#517d19", "#f0ad00"],
   },
   {
     'name': 'mermaid twinkle',
@@ -48,22 +35,7 @@ const buttonConfigs = [
     'name': 'blue swirl',
     'animation': 'ColorWipeRotate',
     'colors': ["#00e4ff", "#00b1ff", "#0070ff", "#004aff", "#0009ff"],
-  },
-  {
-    'name': 'lake zap',
-    'animation': 'Zap',
-    'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
-  },
-  {
-    'name': 'pure white',
-    'animation': 'Light',
-    'colors': ['#ffffff']
-  },
-  {
-    'name': 'off',
-    'brightness': 0,
-    'colors': [],
-  },
+  }
 ];
 
 
@@ -89,8 +61,9 @@ class PresetButton extends Component {
 
     return (
       <div className="preset" onClick={e => this.onClick(e)}>
-        <div className="preset-colors" style={{background: backgroundValue}}></div>
-        <div className="preset-name">{this.props.name}</div>
+        <div className="preset-colors" style={{background: backgroundValue}}>
+          <img src={hotdog} className="hotdog" alt="logo" />
+        </div>
       </div>
     );
   }
@@ -110,14 +83,37 @@ PresetButton = connect(
 )(PresetButton)
 
 
-export default class BeamPresetsMenu extends Component {
+class BeamPresetsMenu extends Component {
   render() {
+    let nextConfig;
+    for (let n in buttonConfigs) {
+      let val = buttonConfigs[n];
+      if (val.animation === this.props.animation) {
+        let idx = buttonConfigs.length - 1 === parseInt(n) ? 0 : parseInt(n) + 1;
+        console.log(idx);
+        nextConfig = buttonConfigs[idx];
+
+        console.log('next config is: ', nextConfig.name, '   n is: ', n, '    idx is: ', idx);
+        break;
+      }
+    }
+
+    if (!nextConfig) {
+      nextConfig = buttonConfigs[0];
+    }
     return (
       <div className="preset-wrapper">
-        {buttonConfigs.map(config => {
-          return <PresetButton key={config.name} {...config} />;
-        })}
+        <PresetButton key={nextConfig.name} {...nextConfig} />
       </div>
     );
   }
 }
+
+
+BeamPresetsMenu = connect(
+  state => state.beamState,
+  (dispatch, ownProps) => ({})
+)(BeamPresetsMenu)
+
+
+export default BeamPresetsMenu;
