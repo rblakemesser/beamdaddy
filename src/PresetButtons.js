@@ -62,7 +62,7 @@ class PresetButton extends Component {
     return (
       <div className="preset" onClick={e => this.onClick(e)}>
         <div className="preset-colors" style={{background: backgroundValue}}>
-          <img src={hotdog} className="hotdog" alt="logo" />
+          <img draggable={false} src={hotdog} className="hotdog" alt="logo" />
         </div>
       </div>
     );
