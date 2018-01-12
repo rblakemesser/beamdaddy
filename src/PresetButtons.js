@@ -19,7 +19,7 @@ const buttonConfigs = [
   {
     'name': 'lava trip',
     'animation': 'Strip',
-    'colors': ['#ff0000', '#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'],
+    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
   },
   {
     'name': 'mermaid twinkle',
@@ -60,8 +60,8 @@ class PresetButton extends Component {
     const backgroundValue = `-webkit-linear-gradient(left, ${colorPositionList.join(', ')})`;
 
     return (
-      <div className="preset" onClick={e => this.onClick(e)}>
-        <div className="preset-colors" style={{background: backgroundValue}}>
+      <div draggable={false} className="preset" onClick={e => this.onClick(e)}>
+        <div draggable={false} className="preset-colors" style={{background: backgroundValue}}>
           <img draggable={false} src={hotdog} className="hotdog" alt="logo" />
         </div>
       </div>
