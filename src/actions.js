@@ -1,7 +1,7 @@
 const BACKEND_HOST = 'http://beam/api/'
 
 
-export const getStatus = () => {
+export const getState = () => {
   return fetch(BACKEND_HOST, {
     method: 'GET',
     headers: {
@@ -9,6 +9,7 @@ export const getStatus = () => {
     }
   }).then((resp) => {
     return resp.json().then(j => {
+      j.speed = Math.cbrt(2.0 / j.delay);
       return j;
     })
   })
