@@ -55,9 +55,14 @@ const buttonConfigs = [
     'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
   },
   {
-    'name': 'pure white',
+    'name': 'cold white',
     'animation': 'Light',
     'colors': ['#ffffff']
+  },
+  {
+    'name': 'warm white',
+    'animation': 'Light',
+    'colors': ['#fff8e7']
   },
   {
     'name': 'off',
