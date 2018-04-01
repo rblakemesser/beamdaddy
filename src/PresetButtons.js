@@ -30,11 +30,6 @@ const buttonConfigs = [
     'colors': ["#0190b6", "#37ad7e", "#84cc33", "#c69817", "#e13d14"],
   },
   {
-    'name': 'catan zap',
-    'animation': 'Zap',
-    'colors': ["#7b6f83", "#9c4300", "#4fa6eb", "#517d19", "#f0ad00"],
-  },
-  {
     'name': 'mermaid twinkle',
     'animation': 'Twinkle',
     'colors': ["#180e80", "#300d80", "#530b80", "#780780", "#a10780"],
@@ -45,14 +40,14 @@ const buttonConfigs = [
     'colors': ["#ffc900", "#33cd5f", "#886aea", "#387ef5", "#ef473a"],
   },
   {
+    'name': 'strobe',
+    'animation': 'Strobe',
+    'colors': ['#ff00ff']
+  },
+  {
     'name': 'blue swirl',
     'animation': 'ColorWipeRotate',
     'colors': ["#00e4ff", "#00b1ff", "#0070ff", "#004aff", "#0009ff"],
-  },
-  {
-    'name': 'lake zap',
-    'animation': 'Zap',
-    'colors': ["#f2f2f2", "#cccccc", "#b0d8da", "#007897", "#0a406e"],
   },
   {
     'name': 'cold white',
@@ -62,7 +57,7 @@ const buttonConfigs = [
   {
     'name': 'warm white',
     'animation': 'Light',
-    'colors': ['#fff8e7']
+    'colors': ['#ffac44']
   },
   {
     'name': 'off',
