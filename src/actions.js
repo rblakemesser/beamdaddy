@@ -1,4 +1,4 @@
-const BACKEND_HOST = 'http://localhost:5555/api/'
+const BACKEND_HOST = 'http://beam/api/'
 
 
 export const getState = () => {
