@@ -63,6 +63,7 @@ html, body, #root {
   flex: 1;
   width: 400px;
   max-width: 600px;
+  margin-bottom: 40px;
 }
 
 .caret-icon {

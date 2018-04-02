@@ -3,87 +3,25 @@ import { connect } from 'react-redux';
 import { getStatus, setBeam } from './actions';
 
 
-const buttonConfigs = [
-  {
-    'name': 'slow rainbow',
-    'animation': 'Rainbow',
-    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
-  },
-  {
-    'name': 'bit trip',
-    'animation': 'Strip',
-    'colors': ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'],
-  },
-  {
-    'name': 'lava trip',
-    'animation': 'Strip',
-    'colors': ['#ff0000', '#ff0000', '#ff5a00', '#ff9a00', '#ffce00', '#ffe808'],
-  },
-  {
-    'name': 'easter trip',
-    'animation': 'Strip',
-    'colors': ['#58e7c7', '#ffebba', '#cc91ff', '#ffa8fb', '#f5ffa6'],
-  },
-  {
-    'name': 'mud wipe rotate',
-    'animation': 'ColorWipeRotate',
-    'colors': ["#0190b6", "#37ad7e", "#84cc33", "#c69817", "#e13d14"],
-  },
-  {
-    'name': 'mermaid twinkle',
-    'animation': 'Twinkle',
-    'colors': ["#180e80", "#300d80", "#530b80", "#780780", "#a10780"],
-  },
-  {
-    'name': 'ionic rain',
-    'animation': 'Rain',
-    'colors': ["#ffc900", "#33cd5f", "#886aea", "#387ef5", "#ef473a"],
-  },
-  {
-    'name': 'strobe',
-    'animation': 'Strobe',
-    'colors': ['#ff00ff']
-  },
-  {
-    'name': 'blue swirl',
-    'animation': 'ColorWipeRotate',
-    'colors': ["#00e4ff", "#00b1ff", "#0070ff", "#004aff", "#0009ff"],
-  },
-  {
-    'name': 'cold white',
-    'animation': 'Light',
-    'colors': ['#ffffff']
-  },
-  {
-    'name': 'warm white',
-    'animation': 'Light',
-    'colors': ['#ffac44']
-  },
-  {
-    'name': 'off',
-    'brightness': 0,
-    'colors': [],
-  },
-];
-
-
 class PresetButton extends Component {
   onClick(e) {
     this.props.setBeam();
   }
 
   render() {
-    const colors = this.props.colors;
-    const numColors = this.props.colors.length;
+    const colors = this.props.displayColors || this.props.colors;
+    const numColors = colors ? colors.length : 0;
 
     const colorPositionList = [];
-    colors.map((color, n) => {
-      const lowerBound = n * 100 / numColors + '%';
-      const upperBound = (n + 1) * 100 / numColors + '%';
+    if (colors) {
+      colors.map((color, n) => {
+        const lowerBound = n * 100 / numColors + '%';
+        const upperBound = (n + 1) * 100 / numColors + '%';
 
-      colorPositionList.push(color + ' ' + lowerBound);
-      colorPositionList.push(color + ' ' + upperBound);
-    });
+        colorPositionList.push(color + ' ' + lowerBound);
+        colorPositionList.push(color + ' ' + upperBound);
+      });
+    }
 
     const backgroundValue = `-webkit-linear-gradient(left, ${colorPositionList.join(', ')})`;
 
@@ -114,7 +52,7 @@ export default class BeamPresetsMenu extends Component {
   render() {
     return (
       <div className="preset-wrapper">
-        {buttonConfigs.map(config => {
+        {this.props.buttonConfigs.map(config => {
           return <PresetButton key={config.name} {...config} />;
         })}
       </div>
